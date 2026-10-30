@@ -1,0 +1,5 @@
+body { font-family: Arial, sans-serif; background: #f3f6fb; margin: 0; }
+.container { max-width: 640px; margin: 80px auto; padding: 36px; background: white; border-radius: 16px; box-shadow: 0 8px 28px #0002; text-align: center; }
+button { margin-top: 20px; padding: 10px 24px; border: 0; border-radius: 8px; background: #1769aa; color: white; cursor: pointer; }
+.result { margin-top: 28px; padding: 20px; background: #e8f5e9; font-size: 24px; border-radius: 10px; }
+.error { margin-top: 20px; color: #b00020; }

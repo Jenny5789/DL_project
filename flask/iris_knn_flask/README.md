@@ -33,6 +33,52 @@
 - `versicolor`
 - `virginica`
 
+## 실행 화면
+
+### 입력 화면
+
+- 붓꽃 측정값 입력
+- 예측 버튼 실행
+
+![Iris 입력 화면](./static/images/input_screen.png)
+
+### 분류 결과
+
+<div align="center">
+  <img src="./static/images/result_setosa.png" alt="Setosa 분류 결과" width="30%" height="180" />
+  <img src="./static/images/result_versicolor.png" alt="Versicolor 분류 결과" width="30%" height="180" />
+  <img src="./static/images/result_virginica.png" alt="Virginica 분류 결과" width="30%" height="180" />
+</div>
+
+### 품종별 이미지
+
+| Setosa | Versicolor | Virginica |
+|:---:|:---:|:---:|
+| <img src="./static/images/setosa.jpg" alt="Setosa" width="220" height="180" /> | <img src="./static/images/versicolor.jpg" alt="Versicolor" width="220" height="180" /> | <img src="./static/images/virginica.jpg" alt="Virginica" width="220" height="180" /> |
+
+## 모델 구성
+
+- 알고리즘: KNN
+- 이웃 수: `3`
+- 입력값: 측정값 4개
+- 출력값: 품종 3개
+- 모델 파일: `model/iris_model.pkl`
+
+## 파일별 기능
+
+- `app.py`: Flask 실행 및 품종 예측
+- `train_model.py`: KNN 모델 학습 및 저장
+- `templates/index.html`: 입력 및 결과 화면
+- `model/iris_model.pkl`: 학습 모델
+- `static/images/`: 품종 이미지 및 실행 화면 캡처
+
+## 모델과 이미지의 관계
+
+- 모델 학습 데이터: Iris 측정값 4개
+- 이미지 사용 목적: 예측 결과 시각화
+- 이미지 학습 여부: 미사용
+- 이미지 출력 시점: 품종 예측 완료 후
+
 ## 프로젝트 구조
 
 ```text
@@ -71,7 +117,8 @@ iris_knn_flask/
 ### Docker 실행
 
 ```powershell
-docker ps
+docker build -t iris-knn-flask .
+docker run -p 5000:5000 iris-knn-flask
 ```
 
 브라우저 접속:
@@ -85,64 +132,3 @@ http://127.0.0.1:5000/
 ```bash
 python3 app.py
 ```
-
-## 실행 화면
-
-### 입력 화면
-
-- 붓꽃 측정값 입력
-- 예측 버튼 실행
-
-![Iris 입력 화면](./static/images/input_screen.png)
-
-### 분류 결과
-
-<div align="center">
-  <img src="./static/images/result_setosa.png" alt="Setosa 분류 결과" width="30%" />
-  <img src="./static/images/result_versicolor.png" alt="Versicolor 분류 결과" width="30%" />
-  <img src="./static/images/result_virginica.png" alt="Virginica 분류 결과" width="30%" />
-</div>
-
-| 품종 | 결과 화면 |
-|---|---|
-| Setosa | ![Setosa 분류 결과](./static/images/result_setosa.png) |
-| Versicolor | ![Versicolor 분류 결과](./static/images/result_versicolor.png) |
-| Virginica | ![Virginica 분류 결과](./static/images/result_virginica.png) |
-
-## 품종 이미지
-
-<div align="center">
-  <img src="./static/images/setosa.jpg" alt="Setosa" width="30%" />
-  <img src="./static/images/versicolor.jpg" alt="Versicolor" width="30%" />
-  <img src="./static/images/virginica.jpg" alt="Virginica" width="30%" />
-</div>
-
-<div align="center">
-  <sub>Setosa</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub>Versicolor</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub>Virginica</sub>
-</div>
-
-## 모델 구성
-
-- 알고리즘: KNN
-- 이웃 수: `3`
-- 입력값: 측정값 4개
-- 출력값: 품종 3개
-- 모델 파일: `model/iris_model.pkl`
-
-## 파일별 기능
-
-- `app.py`: Flask 실행 및 품종 예측
-- `train_model.py`: KNN 모델 학습 및 저장
-- `templates/index.html`: 입력 및 결과 화면
-- `model/iris_model.pkl`: 학습 모델
-- `static/images/`: 품종 이미지 및 실행 화면 캡처
-
-## 모델과 이미지의 관계
-
-- 모델 학습 데이터: Iris 측정값 4개
-- 이미지 사용 목적: 예측 결과 시각화
-- 이미지 학습 여부: 미사용
-- 이미지 출력 시점: 품종 예측 완료 후
-

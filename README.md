@@ -12,26 +12,30 @@
 
 ## 폴더별 프로젝트
 
-### Flask
+---
 
-#### [Iris KNN Flask](./flask/iris_knn_flask/)
+## 1. Flask
 
-붓꽃 측정값을 입력해 KNN 알고리즘으로 품종을 분류하는 Flask 웹 애플리케이션
+### 1.1 [Iris KNN Flask](./flask/iris_knn_flask/)
+
+붓꽃 측정값 기반 KNN 품종 분류 Flask 웹 애플리케이션
 
 - 입력값: Sepal Length, Sepal Width, Petal Length, Petal Width
 - 출력값: Setosa, Versicolor, Virginica
 - 기술: Python, Flask, scikit-learn
 - 실행 포트: `5000`
 
-#### [Flask Hello](./flask/hello.py)
+### 1.2 [Flask Hello](./flask/hello.py)
 
 Flask 기본 웹 애플리케이션 예제
 
-### TensorFlow
+---
 
-#### [MNIST 숫자 분류](./tensorflow/MNIST/)
+## 2. TensorFlow
 
-손글씨 숫자를 CNN 모델로 학습하고 Flask 웹 화면에서 예측하는 프로젝트
+### 2.1 [MNIST 숫자 분류](./tensorflow/MNIST/)
+
+손글씨 숫자 기반 CNN 분류 Flask 웹 애플리케이션
 
 - 데이터셋: MNIST
 - 입력값: 캔버스 손글씨 숫자
@@ -39,21 +43,27 @@ Flask 기본 웹 애플리케이션 예제
 - 기술: Python, TensorFlow, Keras, Flask
 - 실행 포트: `8888`
 
-### Python
+---
 
-#### [Python 예제](./python/)
+## 3. Python
+
+### 3.1 [Python 예제](./python/)
 
 Python 기초 및 머신러닝 관련 실습 코드
 
-### Theory
+---
 
-#### [이론 정리](./theory/)
+## 4. Theory
+
+### 4.1 [이론 정리](./theory/)
 
 머신러닝과 딥러닝 관련 이론 및 학습 자료
 
-## 프로젝트 실행
+---
 
-각 프로젝트 이름을 클릭하면 해당 폴더로 이동할 수 있습니다. 자세한 실행 방법은 프로젝트별 README를 참고합니다.
+## 실행 방법
+
+각 프로젝트 이름을 클릭하면 해당 폴더로 이동할 수 있습니다.
 
 ### Iris KNN Flask
 

@@ -24,38 +24,44 @@ Flask 웹 화면에서 바로 써 볼 수 있게 만든 학습 프로젝트 모�
 
 ---
 
+<br>
+
 ## 🚀 프로젝트
 
 ### 1. 🌸 Iris KNN 품종 분류
 
-붓꽃 측정값 4개를 입력하면 KNN 모델이 품종(Setosa · Versicolor · Virginica)을 맞히는 웹 앱
+> 붓꽃 측정값 4개로 품종(Setosa · Versicolor · Virginica)을 맞히는 웹 앱 *(머신러닝 · KNN)*
+>
+> - 모델: KNN (scikit-learn)
+> - 데이터: scikit-learn 내장 Iris 데이터셋
+>
+> <details>
+> <summary>실행 화면</summary>
+>
+> <img src="./flask/iris_knn_flask/static/images/result_setosa.png" width="400" alt="Iris KNN 실행 화면">
+>
+> </details>
+>
+> ![Python](https://img.shields.io/badge/Python-555555?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-555555?style=flat-square&logo=flask&logoColor=white) ![scikit-learn](https://img.shields.io/badge/scikit--learn-555555?style=flat-square&logo=scikitlearn&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-555555?style=flat-square&logo=docker&logoColor=white)
+>
+> [프로젝트 상세 설명 →](./flask/iris_knn_flask/)
 
-- 모델: KNN (scikit-learn)
-- 데이터: scikit-learn 내장 Iris 데이터셋
-- 기술: Python, Flask, scikit-learn, Docker
-
-<details>
-<summary>실행 화면</summary>
-
-<img src="./flask/iris_knn_flask/static/images/result_setosa.png" width="400" alt="Iris KNN 실행 화면">
-
-</details>
-
-[프로젝트 상세 설명 →](./flask/iris_knn_flask/)
+<br>
 
 ### 2. ✍️ MNIST 손글씨 숫자 인식
 
-캔버스에 쓴 숫자를 CNN 모델이 0부터 9 중에서 맞히는 웹 앱
-
-- 모델: CNN (TensorFlow · Keras)
-- 데이터: MNIST 손글씨 숫자 데이터셋
-- 기술: Python, Flask, TensorFlow, Keras
-
-<details>
-<summary>실행 화면</summary>
-
-<img src="./tensorflow/MNIST/static/image/mnist.png" width="500" alt="MNIST 실행 화면">
-
-</details>
-
-[프로젝트 상세 설명 →](./tensorflow/MNIST/)
+> 캔버스에 쓴 숫자를 0부터 9 중에서 맞히는 웹 앱 *(딥러닝 · CNN)*
+>
+> - 모델: CNN (TensorFlow · Keras)
+> - 데이터: MNIST 손글씨 숫자 데이터셋
+>
+> <details>
+> <summary>실행 화면</summary>
+>
+> <img src="./tensorflow/MNIST/static/image/mnist.png" width="500" alt="MNIST 실행 화면">
+>
+> </details>
+>
+> ![Python](https://img.shields.io/badge/Python-555555?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-555555?style=flat-square&logo=flask&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-555555?style=flat-square&logo=tensorflow&logoColor=white) ![Keras](https://img.shields.io/badge/Keras-555555?style=flat-square&logo=keras&logoColor=white)
+>
+> [프로젝트 상세 설명 →](./tensorflow/MNIST/)

@@ -44,7 +44,7 @@ Flask 웹 화면에서 바로 써 볼 수 있게 만든 학습 프로젝트 모�
 >
 > ![Python](https://img.shields.io/badge/Python-555555?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-555555?style=flat-square&logo=flask&logoColor=white) ![scikit-learn](https://img.shields.io/badge/scikit--learn-555555?style=flat-square&logo=scikitlearn&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-555555?style=flat-square&logo=docker&logoColor=white)
 >
-> [프로젝트 상세 설명 →](./flask/iris_knn_flask/)
+> [상세보기 →](./flask/iris_knn_flask/)
 
 <br>
 
@@ -64,4 +64,4 @@ Flask 웹 화면에서 바로 써 볼 수 있게 만든 학습 프로젝트 모�
 >
 > ![Python](https://img.shields.io/badge/Python-555555?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-555555?style=flat-square&logo=flask&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-555555?style=flat-square&logo=tensorflow&logoColor=white) ![Keras](https://img.shields.io/badge/Keras-555555?style=flat-square&logo=keras&logoColor=white)
 >
-> [프로젝트 상세 설명 →](./tensorflow/MNIST/)
+> [상세보기 →](./tensorflow/MNIST/)

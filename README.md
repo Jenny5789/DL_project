@@ -32,7 +32,7 @@ Flask 웹 화면에서 바로 써 볼 수 있게 만든 학습 프로젝트 모�
 <tr>
 <td width="50%" valign="top">
 
-<a href="./flask/iris_knn_flask/"><img src="./flask/iris_knn_flask/static/images/result_setosa.png" height="240" alt="Iris KNN 실행 화면"></a>
+<a href="./flask/iris_knn_flask/"><img src="images/card_iris.png" height="240" alt="Iris KNN 실행 화면 · 품종 3종"></a>
 
 <img src="https://img.shields.io/badge/Machine_Learning-1f3a5f?style=flat" alt="Machine Learning" align="middle"> &nbsp;<sub>2026.10</sub>
 

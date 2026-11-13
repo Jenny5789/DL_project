@@ -4,6 +4,34 @@
   "validation_size": 23,
   "test_size": 22,
   "pca_components": 2,
+  "pca_candidates": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "pca_comparison": [
+    {
+      "pca_components": 1,
+      "k": 5,
+      "validation_accuracy": 0.8695652173913043
+    },
+    {
+      "pca_components": 2,
+      "k": 5,
+      "validation_accuracy": 0.9565217391304348
+    },
+    {
+      "pca_components": 3,
+      "k": 5,
+      "validation_accuracy": 1.0
+    },
+    {
+      "pca_components": 4,
+      "k": 5,
+      "validation_accuracy": 1.0
+    }
+  ],
   "k_candidates": [
     1,
     3,

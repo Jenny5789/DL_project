@@ -17,6 +17,7 @@ from sklearn.preprocessing import StandardScaler
 RANDOM_STATE = 42
 PCA_COMPONENTS = 2
 K_CANDIDATES = [1, 3, 5, 7, 9]
+PCA_CANDIDATES = [1, 2, 3, 4]
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "model"
@@ -94,6 +95,61 @@ print(f"선택된 k: {best_k}")
 print(f"최고 Validation Accuracy: {best_val_accuracy:.4f}")
 
 
+# PCA 주성분 수 비교: k=5 고정
+pca_comparison_results = []
+
+for components in PCA_CANDIDATES:
+    pca_pipeline = Pipeline([
+        ("scaler", StandardScaler()),
+        ("pca", PCA(n_components=components)),
+        ("knn", KNeighborsClassifier(n_neighbors=best_k)),
+    ])
+
+    pca_pipeline.fit(X_train, y_train)
+    pca_val_pred = pca_pipeline.predict(X_val)
+    pca_val_accuracy = accuracy_score(y_val, pca_val_pred)
+
+    pca_comparison_results.append({
+        "pca_components": components,
+        "k": best_k,
+        "validation_accuracy": float(pca_val_accuracy),
+    })
+
+    print(
+        f"PCA components={components}, k={best_k} "
+        f"Validation Accuracy: {pca_val_accuracy:.4f}"
+    )
+
+
+# PCA 비교 결과 CSV 저장
+pca_comparison_path = RESULTS_DIR / "pca_comparison.csv"
+with pca_comparison_path.open("w", newline="", encoding="utf-8") as file:
+    writer = csv.DictWriter(
+        file,
+        fieldnames=["pca_components", "k", "validation_accuracy"],
+    )
+    writer.writeheader()
+    writer.writerows(pca_comparison_results)
+
+
+# PCA 비교 그래프 저장
+plt.figure(figsize=(7, 4))
+plt.plot(
+    [item["pca_components"] for item in pca_comparison_results],
+    [item["validation_accuracy"] for item in pca_comparison_results],
+    marker="o",
+)
+plt.xticks(PCA_CANDIDATES)
+plt.ylim(0, 1.05)
+plt.xlabel("Number of PCA Components")
+plt.ylabel("Validation Accuracy")
+plt.title("PCA Components Comparison")
+plt.grid(alpha=0.3)
+plt.tight_layout()
+plt.savefig(RESULTS_DIR / "pca_comparison.png", dpi=150)
+plt.close()
+
+
 # Train + Validation 데이터로 최종 모델 학습
 X_train_final = np.concatenate([X_train, X_val])
 y_train_final = np.concatenate([y_train, y_val])
@@ -147,6 +203,8 @@ metrics = {
     "validation_size": int(len(X_val)),
     "test_size": int(len(X_test)),
     "pca_components": PCA_COMPONENTS,
+    "pca_candidates": PCA_CANDIDATES,
+    "pca_comparison": pca_comparison_results,
     "k_candidates": K_CANDIDATES,
     "best_k": int(best_k),
     "validation_accuracy": float(best_val_accuracy),
@@ -197,6 +255,8 @@ print()
 print("저장 완료")
 print(f"- {model_path}")
 print(f"- {comparison_path}")
+print(f"- {pca_comparison_path}")
+print(f"- {RESULTS_DIR / 'pca_comparison.png'}")
 print(f"- {metrics_path}")
 print(f"- {RESULTS_DIR / 'confusion_matrix.png'}")
 print(f"- {predictions_path}")

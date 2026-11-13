@@ -158,16 +158,33 @@ Pipeline 사용 이유:
 
 - 선택: `PCA(n_components=2)`
 - 이유: 원본 특성 4개를 PC1·PC2로 축소하고 2차원 산점도로 시각화
+- 비교 결과: PCA 1개 `86.96%`, PCA 2개 `95.65%`, PCA 3개 `100%`, PCA 4개 `100%`
+- 최종 선택: 웹 산점도 구성을 위해 PCA 2개 유지
 
 ### 6.2 KNN의 k 값
 
 - 비교 후보: `1, 3, 5, 7, 9` / 비교 기준: Val Accuracy / 동률 처리: 가장 작은 `k` 선택 / 선택 결과: `k=5`
 
+### 7.3 검증 기준
+
+- Test 데이터: 최종 평가 단계에서만 사용
+- Scaler·PCA: 학습 데이터 기준 `fit`, Validation·Test 데이터 기준 `transform`
+- Pipeline: StandardScaler → PCA → KNN 순서 고정
+- Validation 재사용: k 비교와 PCA 주성분 비교에 사용
+- 해석: PCA 3·4개의 Validation 100%는 참고 결과로 기록, 웹 모델은 PCA 2개 유지
+
+### 7.4 PCA 주성분 수 비교
+
+- 비교 후보: `1, 2, 3, 4`
+- KNN `k`: `5` 고정
+- 비교 기준: Val Accuracy
+- 웹 시각화 모델: PC1·PC2 사용을 위해 `PCA(n_components=2)` 유지
+
 ---
 
 ## 8. 실험 결과
 
-| k | Validation Accuracy |
+| k | Val Accuracy |
 |---:|---:|
 | 1 | 82.61% |
 | 3 | 82.61% |
@@ -180,6 +197,18 @@ Pipeline 사용 이유:
 - Test Accuracy: `90.91%`
 - Test 정답 수: 20개 / 22개
 
+### PCA 주성분 수 비교
+
+![PCA 주성분 수 비교](./results/pca_comparison.png)
+
+PCA 주성분 수별 Val Accuracy 비교
+
+### Test 혼동행렬
+
+![Iris Test 혼동행렬](./results/confusion_matrix.png)
+
+실제 품종과 예측 품종 비교
+
 ---
 
 ## 9. 실행 화면
@@ -188,11 +217,13 @@ Pipeline 사용 이유:
 
 - 측정값 4개 입력
 - 예측 품종 출력
-- 예측 확률 출력
+- KNN 이웃 일치율 출력
 - PC1·PC2 출력
 - 예측 품종 이미지 출력
 
 ![Iris PCA + KNN 실행 화면](./images/iris_pca_knn.png)
+
+입력값·예측 결과·PC1·PC2·품종 이미지 표시
 
 ### 8.2 PCA 산점도
 
@@ -200,6 +231,10 @@ Pipeline 사용 이유:
 - y축: PC2
 - 색상: 품종별 구분
 - 별표: 사용자 입력 데이터 위치
+
+![PCA 산점도 실행 화면](./images/iris_pca_knn_scatter_plot.png)
+
+PC1·PC2 기준 품종 분포와 입력 데이터 위치 표시
 
 ---
 
@@ -216,7 +251,7 @@ PC1·PC2 계산
         ↓
 KNN 품종 예측
         ↓
-예측 확률 및 꽃 이미지 출력
+KNN 이웃 일치율 및 꽃 이미지 출력
         ↓
 PCA 산점도에 입력 위치 표시
 ```
@@ -279,6 +314,10 @@ http://127.0.0.1:5000/
   - StandardScaler, PCA, KNN 포함 Pipeline
 - `results/k_comparison.csv`
   - k 후보별 Validation 정확도
+- `results/pca_comparison.csv`
+  - PCA 주성분 수별 Validation 정확도
+- `results/pca_comparison.png`
+  - PCA 주성분 수 비교 그래프
 - `results/metrics.json`
   - 분할 정보, 선택된 k, 정확도, PCA 설명 분산
 - `results/confusion_matrix.png`
@@ -296,12 +335,15 @@ iris_pca_knn_flask/
 ├─ train_model.py                # 데이터 분할, PCA·KNN 학습 및 평가
 ├─ README.md                     # 프로젝트 설명 및 실험 기록
 ├─ images/
-│  └─ iris_pca_knn.png           # 실행 화면 캡처
+│  ├─ iris_pca_knn.png           # 입력·분류 결과 화면
+│  └─ iris_pca_knn_scatter_plot.png # PCA 산점도 화면
 ├─ model/
 │  └─ iris_pca_knn_pipeline.pkl   # StandardScaler·PCA·KNN Pipeline
 ├─ results/
 │  ├─ confusion_matrix.png       # Test 데이터 혼동행렬
 │  ├─ k_comparison.csv           # k 후보별 Validation 정확도
+│  ├─ pca_comparison.csv         # PCA 주성분 수별 Validation 정확도
+│  ├─ pca_comparison.png         # PCA 주성분 수 비교 그래프
 │  ├─ metrics.json               # 실험 설정 및 평가 지표
 │  └─ test_predictions.csv       # Test 실제값·예측값 비교
 ├─ templates/

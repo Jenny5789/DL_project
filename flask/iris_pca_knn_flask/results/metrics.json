@@ -1,0 +1,27 @@
+{
+  "random_state": 42,
+  "train_size": 105,
+  "validation_size": 23,
+  "test_size": 22,
+  "pca_components": 2,
+  "k_candidates": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "best_k": 5,
+  "validation_accuracy": 0.9565217391304348,
+  "test_accuracy": 0.9090909090909091,
+  "pca_explained_variance_ratio": [
+    0.7308052022442726,
+    0.2258842019222751
+  ],
+  "pca_total_explained_variance": 0.9566894041665477,
+  "target_names": [
+    "setosa",
+    "versicolor",
+    "virginica"
+  ]
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iris PCA + KNN 분류</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="container">
+    <h1>Iris PCA + KNN 분류</h1>
+    <p class="description">붓꽃 측정값 4개를 입력하면 PCA 변환 결과와 KNN 예측을 확인할 수 있습니다.</p>
+
+    <section class="card">
+        <h2>입력값</h2>
+        <form method="post">
+            <label>Sepal Length (cm) <input type="number" step="0.1" name="sepal_length" placeholder="4.3 ~ 7.9" required></label>
+            <label>Sepal Width (cm) <input type="number" step="0.1" name="sepal_width" placeholder="2.0 ~ 4.4" required></label>
+            <label>Petal Length (cm) <input type="number" step="0.1" name="petal_length" placeholder="1.0 ~ 6.9" required></label>
+            <label>Petal Width (cm) <input type="number" step="0.1" name="petal_width" placeholder="0.1 ~ 2.5" required></label>
+            <button type="submit">예측하기</button>
+        </form>
+    </section>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if result %}
+    <section class="card result">
+        <div class="result-layout">
+            <div>
+                <h2>분류 결과</h2>
+                <p class="prediction">{{ result.name }}</p>
+                <p>예측 확률: <strong>{{ "%.2f"|format(result.probability * 100) }}%</strong></p>
+                <div class="pca-values">
+                    <div><span>PC1</span><strong>{{ "%.4f"|format(result.pc1) }}</strong></div>
+                    <div><span>PC2</span><strong>{{ "%.4f"|format(result.pc2) }}</strong></div>
+                </div>
+            </div>
+            <img class="flower-image" src="{{ url_for('static', filename=result.image) }}" alt="{{ result.name }} 붓꽃 이미지">
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="card plot-card">
+        <h2>PC1·PC2 산점도</h2>
+        <p>색상은 품종, 별표는 입력 데이터 위치입니다.</p>
+        <img src="data:image/png;base64,{{ plot_image }}" alt="Iris PCA 산점도">
+    </section>
+</main>
+</body>
+</html>

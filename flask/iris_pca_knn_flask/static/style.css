@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f6fb; color: #172033; font-family: Arial, sans-serif; }
+.container { width: min(920px, 92%); margin: 40px auto; }
+h1 { margin-bottom: 8px; }
+.description { color: #536176; }
+.card { margin-top: 20px; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 6px 20px #17203318; }
+form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+label { display: grid; gap: 6px; font-weight: 600; }
+input { width: 100%; padding: 10px; border: 1px solid #ccd4df; border-radius: 8px; font-size: 16px; }
+button { grid-column: 1 / -1; padding: 12px; border: 0; border-radius: 8px; background: #2563eb; color: white; font-size: 16px; cursor: pointer; }
+.result { border-left: 6px solid #2563eb; }
+.result-layout { display: grid; grid-template-columns: 360px 300px; gap: 24px; align-items: center; justify-content: space-between; }
+.prediction { font-size: 28px; font-weight: 700; color: #2563eb; }
+.pca-values { display: flex; flex-direction: column; gap: 10px; width: 360px; }
+.pca-values div { flex: 1; padding: 14px; background: #eef4ff; border-radius: 10px; }
+.pca-values span, .pca-values strong { display: block; }
+.pca-values span { color: #536176; }
+.pca-values strong { margin-top: 5px; font-size: 20px; }
+.flower-image { width: 300px; height: 300px; object-fit: cover; border-radius: 12px; position: relative; left: -100px; }
+.plot-card img { display: block; width: 100%; max-width: 720px; margin: auto; }
+.error { margin-top: 20px; padding: 14px; border-radius: 8px; background: #fee2e2; color: #991b1b; }
+@media (max-width: 720px) { form { grid-template-columns: 1fr; } .result-layout { grid-template-columns: 1fr; } .pca-values { width: 100%; } .flower-image { width: 100%; height: 220px; } }
